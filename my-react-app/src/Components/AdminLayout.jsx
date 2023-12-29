@@ -38,9 +38,41 @@ const AdminLayout = () => {
                 <header>
                     <div>Header</div>
                     {user && user.name && (
-                        <div>
-                            {user.name}
-                            <button className="btn-logout" onClick={onLogout}>
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: "40px",
+                                    height: "40px",
+                                    backgroundColor: "green",
+                                    borderRadius: "50%",
+                                    textAlign: "center",
+                                    alignItems: "center",
+                                    color: "white",
+                                    marginRight: "5px",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    fontSize: "20px",
+                                    fontWeight: "bold",
+                                }}
+                            >
+                                U
+                            </div>
+                            <div style={{ fontSize: "17px", color: "gray" }}>
+                                {" "}
+                                {user.name}
+                            </div>
+
+                            <button
+                                className="btn-logout"
+                                style={{ border: "none", marginLeft: "10px" }}
+                                onClick={onLogout}
+                            >
                                 Log Out
                             </button>
                         </div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewUser = () => {
     const [name, setName] = useState("");
@@ -19,11 +21,13 @@ const NewUser = () => {
                 setPassword("");
                 setPassword_confirmation("");
                 navigate("/");
+                toast.success("User Added Successfuly");
             })
             .catch((error) => {
                 setErrors(error.response.data); // Assuming error.response.data contains error details
                 console.log(error);
             });
+        <ToastContainer />;
     };
 
     return (
