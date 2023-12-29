@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
+
 class UpdateUserRequest extends FormRequest
 {
     /**
@@ -23,14 +25,11 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name'=>'required|string|max:55',
-            'email'=>'required|email|unique:users,email'.this->id,
-            'password'=>[
-                'confirmed',
-                password::min(8)
-                ->letters
-                ->symbols
-
-            ]
+            'email' => 'required|email|unique:users,email,' . $this->id,
+            'password'=>'required'
         ];
+
+
+
     }
 }
