@@ -3,6 +3,7 @@ import axiosClient from "../axiosClient";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useStateContext } from "../Contexts/ContextProvider";
 
 const NewUser = () => {
     const [name, setName] = useState("");
@@ -10,16 +11,25 @@ const NewUser = () => {
     const [password, setPassword] = useState("");
     const [password_confirmation, setPassword_confirmation] = useState("");
     const [errors, setErrors] = useState(null);
+    const [is_admin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
+    const { user } = useStateContext();
 
     const addUser = () => {
         axiosClient
-            .post("/users", { name, email, password, password_confirmation })
+            .post("/users", {
+                name,
+                email,
+                password,
+                password_confirmation,
+                is_admin,
+            })
             .then(() => {
                 setName("");
                 setEmail("");
                 setPassword("");
                 setPassword_confirmation("");
+                setIsAdmin(false);
                 navigate("/");
                 toast.success("User Added Successfuly", {
                     position: "top-center",
@@ -92,6 +102,16 @@ const NewUser = () => {
                         setPassword_confirmation(e.target.value);
                     }}
                 />
+                <div style={{ position: "relative" }}>
+                    <input
+                        type="checkbox"
+                        id="Admin"
+                        checked={is_admin}
+                        onChange={() => setIsAdmin(true)}
+                        style={{ width: "20px" }}
+                    />
+                    <label for="Admin">Admin ?</label>
+                </div>
                 <button type="submit" className="btn">
                     Add
                 </button>

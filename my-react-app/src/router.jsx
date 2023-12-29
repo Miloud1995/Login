@@ -8,6 +8,7 @@ import VisitLayout from "./Components/VisitLayout.";
 import { Navigate } from "react-router-dom";
 import NewUser from "./Pages/NewUser";
 import UserForm from "./Pages/UserForm";
+import NormalUSerLAyout from "./Components/NormalUSerLAyout";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
                 element: <Signup />,
             },
         ],
+    },
+    {
+        path: "/home",
+        element: <NormalUSerLAyout />,
     },
 ]);
 
