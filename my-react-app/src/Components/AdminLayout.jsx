@@ -61,7 +61,7 @@ const AdminLayout = () => {
                                     fontWeight: "bold",
                                 }}
                             >
-                                U
+                                {user.name.charAt(0).toUpperCase()}
                             </div>
                             <div style={{ fontSize: "17px", color: "gray" }}>
                                 {" "}
@@ -70,7 +70,11 @@ const AdminLayout = () => {
 
                             <button
                                 className="btn-logout"
-                                style={{ border: "none", marginLeft: "10px" }}
+                                style={{
+                                    border: "none",
+                                    marginLeft: "10px",
+                                    color: "black",
+                                }}
                                 onClick={onLogout}
                             >
                                 Log Out

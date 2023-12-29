@@ -27,7 +27,6 @@ const UserForm = () => {
         await axiosClient.get(`/users/${id}`).then(({ data }) => {
             setUser(data);
             setLoading(false);
-            toast.success("User data fetched successfully!");
         });
     };
 

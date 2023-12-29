@@ -21,13 +21,33 @@ const NewUser = () => {
                 setPassword("");
                 setPassword_confirmation("");
                 navigate("/");
-                toast.success("User Added Successfuly");
+                toast.success("User Added Successfuly", {
+                    position: "top-center",
+                    autoClose: 30000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             })
             .catch((error) => {
                 setErrors(error.response.data); // Assuming error.response.data contains error details
                 console.log(error);
             });
-        <ToastContainer />;
+        <ToastContainer
+            position="top-center"
+            autoClose={30000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+        />;
     };
 
     return (
