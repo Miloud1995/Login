@@ -28,7 +28,6 @@ const UserForm = () => {
             setUser(data);
             setLoading(false);
             toast.success("User data fetched successfully!");
-            <ToastContainer />;
         });
     };
 
@@ -67,7 +66,6 @@ const UserForm = () => {
                     loading ...
                 </div>
             )}
-
             <h1 style={{ textAlign: "center" }}>Update User : {user.name}</h1>
             <div className="card animated fadeInDown">
                 {error && (
@@ -109,6 +107,7 @@ const UserForm = () => {
                     </button>
                 </form>
             </div>
+            <ToastContainer />;
         </div>
     );
 };

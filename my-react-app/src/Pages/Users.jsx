@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axiosClient from "../axiosClient";
 import { useStateContext } from "../Contexts/ContextProvider";
 import { Link } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -25,6 +27,16 @@ const Users = () => {
                 })
                 .then(() => {
                     getUsers();
+                    toast.success("User  deleted successfully!", {
+                        position: "top-center",
+                        autoClose: 30000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
                 })
                 .catch((error) => {
                     if (error.response) {
@@ -34,6 +46,18 @@ const Users = () => {
                     }
                 });
         }
+        <ToastContainer
+            position="top-center"
+            autoClose={30000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+        />;
     };
 
     const getUsers = () => {
@@ -107,7 +131,6 @@ const Users = () => {
                                 <td>{userr.name}</td>
                                 <td>{userr.email}</td>
                                 <td>{userr.created_at}</td>
-                               
 
                                 <td>
                                     <Link
@@ -129,6 +152,7 @@ const Users = () => {
                     </tbody>
                 </table>
             </div>
+            <ToastContainer />
         </div>
     );
 };

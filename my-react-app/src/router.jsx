@@ -1,64 +1,59 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Login from './Pages/Login';
-import Signup from './Pages/Signup';
-import Users from './Pages/Users';
-import NotFound from './Pages/NotFound';
-import AdminLayout from './Components/AdminLayout';
-import VisitLayout from './Components/VisitLayout.';
-import { Navigate } from 'react-router-dom';
-import UserForm from './Pages/UserForm';
-
+import { createBrowserRouter } from "react-router-dom";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import Users from "./Pages/Users";
+import NotFound from "./Pages/NotFound";
+import AdminLayout from "./Components/AdminLayout";
+import VisitLayout from "./Components/VisitLayout.";
+import { Navigate } from "react-router-dom";
+import NewUser from "./Pages/NewUser";
+import UserForm from "./Pages/UserForm";
 
 const router = createBrowserRouter([
     {
-        path: '*',
-        element: <NotFound/>,
+        path: "*",
+        element: <NotFound />,
     },
     {
-        path: '/',
+        path: "/",
         element: <AdminLayout />,
         children: [
             {
-                path: '/',
-                element:<Navigate to="/users"/>
+                path: "/",
+                element: <Navigate to="/users" />,
             },
             {
-               path: '/users',
+                path: "/users",
                 element: <Users />,
-
             },
             {
-                path: '/users/newUser',
-                 element: <UserForm key="userCreate"/>,
-
+                path: "/users/newUser",
+                element: <NewUser key="userCreate" />,
             },
             {
-                path: '/users/:id',
-                 element: <UserForm key="userUpdate"/>,
-
-             },
+                path: "/users/:id",
+                element: <UserForm key="userUpdate" />,
+            },
             {
-                path: '/dashbord',
-                element:'/dashbord'
-            }
-        ]
+                path: "/dashbord",
+                element: "/dashbord",
+            },
+        ],
     },
     {
-        path: '/',
-        element : <VisitLayout/>,
+        path: "/",
+        element: <VisitLayout />,
         children: [
-
             {
-                path: '/login',
-                element: <Login/>,
+                path: "/login",
+                element: <Login />,
             },
             {
-                path: '/signup',
-                element: <Signup/>,
-            }
-
-        ]
-    }
-])
+                path: "/signup",
+                element: <Signup />,
+            },
+        ],
+    },
+]);
 
 export default router;
